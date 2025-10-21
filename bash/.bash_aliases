@@ -38,4 +38,5 @@ alias py="python3"       # Shortcut for Python 3
 # ========================
 alias free="free -h"      # Display memory usage in human-readable format
 alias path='echo $PATH'   # Print the current PATH
-
+alias cdwm="vim ~/suckless/dwm/config.h"
+alias mdwm="cd ~/suckless/dwm; sudo make clean install; cd -"
