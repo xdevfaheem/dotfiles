@@ -1,0 +1,3 @@
+ig this should be enough to replicate my settings across vscode/ium, code-oss... 
+
+i use code-oss btw, (that what void packages)

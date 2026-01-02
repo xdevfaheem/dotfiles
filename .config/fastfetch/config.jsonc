@@ -1,0 +1,130 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "auto",
+        "source": "void",
+        "position": "left",
+        "padding": {
+            "top": 2,
+            "left": 3,
+            "right": 3
+        },
+       // "color": {
+       //     "1": "light_blue",
+       //     "2": "light_blue"
+       // }
+    },
+    "display": {
+        "brightColor": false,
+        "disableLinewrap": true,
+        "hideCursor": true,
+        "separator": "",
+        "color": {
+            "separator": "light_white", // Bold
+            "keys": "bright_cyan"
+        },
+        "constants": [
+            "───────────────────────────"
+        ],
+        "size": {
+            "ndigits": 1,
+            "maxPrefix": "MB",
+            "binaryPrefix": "si"
+        },
+        "key": {
+            "type": "both",
+            "paddingLeft": 3,
+            "width": 24
+        }
+    },
+    "modules": [
+       // {
+       //     "fqdn": true,
+       //     "type": "title",
+       //     "format": "{user-name-colored>49}{at-symbol-colored}{host-name-colored}",
+       //     "color": {
+       //         "user": "92",
+       //         "at": "2;37",
+       //         "host": "92"
+       //     }
+       //   //"keyColor": "green"
+       // },
+        "break",
+        {
+            "type": "custom",
+            "format": "┌{$1} {#1}System Information{#} {$1}┐"
+        },
+        "break",
+        {
+            "key": "OS",
+            "type": "os"
+        },
+        {
+            "key": "Machine",
+            "type": "host"
+        },
+        {
+            "key": "Kernel",
+            "type": "kernel"
+        },
+        {
+            "key": "WM",
+            "type": "wm"
+        },
+        {
+            "key": "Shell",
+            "type": "shell"
+        },
+        {
+            "key": "Terminal",
+            "type": "terminal"
+        },
+        {
+            "key": "Packages",
+            "type": "packages"
+        },
+        {
+            "key": "CPU",
+            "type": "cpu",
+            "temp": true,
+            "showPeCoreCount": true
+        },
+        {
+            "key": "GPU",
+            "type": "gpu"
+        },
+        {
+            "key": "Memory",
+            "type": "memory"
+        },
+        {
+            //"key": "Disk ({mountpoint})",
+            "type": "disk",
+            "folders": "/home:/:/boot"
+        },
+        {
+            "key": "Display",
+            "type": "display"
+        },
+        {
+            "key": "Local IP",
+            "type": "localip",
+            "format": "{ipv4} ({ifname})"
+        },
+        {
+            "key": "Uptime",
+            "type": "uptime"
+        },
+        {
+            "key": "Battery",
+            "type": "battery",
+            "temp": true
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "└{$1}────────────────────{$1}┘"
+        },
+        "break"
+    ]
+}

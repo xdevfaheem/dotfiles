@@ -1,0 +1,15 @@
+# ~/.bashenv
+
+# general
+export EDITOR="vim"
+
+# fzf 
+
+# Default options to be passed to fzf
+export FZF_DEFAULT_OPTS="--height 50% --layout reverse --border top --info right --color bw"
+
+# Command to generate the desired list to be piped to fzf
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+
+# some scripts there
+export PATH="$HOME/.local/bin:$PATH"

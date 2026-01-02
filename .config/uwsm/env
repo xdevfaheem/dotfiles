@@ -1,0 +1,3 @@
+# See https://wiki.hyprland.org/Configuring/Environment-variables/
+export XCURSOR_SIZE=24
+

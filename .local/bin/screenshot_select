@@ -1,0 +1,6 @@
+#!/bin/sh
+
+FILE=~/pictures/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png
+scrot "$FILE" --select --line mode=edge
+dunstify -a "Scrot" -u low -i $FILE "Scrot" "Selected Screen Captured"
+
