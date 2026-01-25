@@ -5,9 +5,10 @@ what i use rn,
 Ooperating System - Void Linux
 Window Manager - DWM
 Terminal - st
+Editor - Neovim
 Status Bar - dwmblocks-async
 Launcher - dmenu
-Browser - Librewolf
+Browser - Librewolf (with Yandex search engine)
 File Manager - PCManFM/lf
 Notifications - dunst
 Image viewer - nsxiv
