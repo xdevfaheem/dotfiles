@@ -1,8 +1,26 @@
 my dotfiles
 
-what i use rn,
+## usage
 
-Ooperating System - Void Linux
+### stow (create symlink)
+dry run - `stow -n .`
+actual stow - `stow .`
+
+### unstow (remove symlink)
+dry run - `stow -nD .`
+actual stow - `stow -D .`
+
+### restow
+`stow -D .`
+`stow .`
+
+or 
+
+`stow -R .`
+
+## what i use rn,
+
+Operating System - Void Linux
 Window Manager - DWM
 Terminal - st
 Editor - Neovim
