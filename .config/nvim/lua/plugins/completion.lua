@@ -40,7 +40,7 @@ require("blink.cmp").setup({
 		trigger = { show_on_trigger_character = true, show_in_snippet = false },
 		keyword = { range = "prefix" },
 		accept = { auto_brackets = { enabled = true } },
-		list = { selection = { preselect = false, auto_insert = false } },
+		list = { selection = { preselect = true, auto_insert = false } },
 		ghost_text = { enabled = true },
 	},
 

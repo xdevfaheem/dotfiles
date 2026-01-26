@@ -13,17 +13,13 @@
       "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
       "src": "https://github.com/sindrets/diffview.nvim"
     },
-    "flash.nvim": {
-      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
-      "src": "https://github.com/folke/flash.nvim"
-    },
     "gitsigns.nvim": {
       "rev": "abf82a65f185bd54adc0679f74b7d6e1ada690c9",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
-    "grug-far.nvim": {
-      "rev": "1f7a722a9b9f0206a345377c13e62542f484398a",
-      "src": "https://github.com/MagicDuck/grug-far.nvim"
+    "lualine.nvim": {
+      "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
+      "src": "https://github.com/nvim-lualine/lualine.nvim.git"
     },
     "mason-tool-installer.nvim": {
       "rev": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc",
@@ -38,7 +34,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-treesitter": {
-      "rev": "b67d29ce748c3c488485a4733e16acda0ec8d09e",
+      "rev": "568ede7e79172a0fe7c9d631454a97ad968deaf2",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
@@ -49,10 +45,6 @@
     "tokyonight.nvim": {
       "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
       "src": "https://github.com/folke/tokyonight.nvim"
-    },
-    "vague.nvim": {
-      "rev": "fcc283576764474ccfbbcca240797d5d7f4d8a78",
-      "src": "https://github.com/vague-theme/vague.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",

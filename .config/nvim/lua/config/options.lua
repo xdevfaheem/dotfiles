@@ -31,6 +31,7 @@ opt.signcolumn = "yes:1" -- Always show sign column (on the left, like for diagn
 opt.showmatch = true -- Highlight matching brackets
 opt.matchtime = 2 -- How long to show matching bracket
 opt.cmdheight = 1 -- no command line, it replace last line when used
+opt.showmode = false -- disable mode in last line as lualine show that rn
 opt.completeopt = { "menuone", "noselect", "popup" } -- Completion options
 opt.shortmess:append("c")
 opt.pumheight = 10 -- Popup menu height (num entries)
