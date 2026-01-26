@@ -27,7 +27,7 @@ opt.hlsearch = false -- don't highlight results of previous search, its great
 
 -- Visual settings
 opt.list = true -- Show whitespace characters
-opt.signcolumn = "yes:1" -- Always show sign column (on the left, like for diagnostic)
+opt.signcolumn = "yes" -- Always show sign column (on the left, like for diagnostic)
 opt.showmatch = true -- Highlight matching brackets
 opt.matchtime = 2 -- How long to show matching bracket
 opt.cmdheight = 1 -- no command line, it replace last line when used

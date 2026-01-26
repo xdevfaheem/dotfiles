@@ -7,7 +7,6 @@ vim.pack.add({
 
 -- Setup gitsigns.nvim
 require("gitsigns").setup({
-	current_line_blame = true,
 	word_diff = true,
 	on_attach = function(buffer)
 		local gs = require("gitsigns")
@@ -54,6 +53,13 @@ require("gitsigns").setup({
 		map("n", "<leader>hD", function() gs.diffthis("~") end, "Diff This ~")
 
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+
+		map('n', '<leader>tb', gs.toggle_current_line_blame, "Toggle git blame line")
+		map("n", "<leader>tG", function()
+			local cfg = require("gitsigns.config").config
+			local current = cfg.signcolumn
+			gs.toggle_signs(not current)
+		end, "Toggle git signs" )
 	end,
 })
 
@@ -82,14 +88,6 @@ vim.keymap.set("n", "<leader>Do", function()
 end, { desc = "Diffview: open (prompt for refs or default)" })
 
 vim.keymap.set("n", "<leader>Dc", "<cmd>DiffviewClose<cr>", { desc = "Diffview: Close" })
+vim.keymap.set("n", "<leader>tD", "<cmd>DiffviewToggleFiles<cr>", { desc = "Diffview: Toggle file list" })
 vim.keymap.set("n", "<leader>Dh", "<cmd>DiffviewFileHistory %<cr>", { desc = "Diffview: File history" })
 vim.keymap.set("n", "<leader>DH", "<cmd>DiffviewFileHistory<cr>", { desc = "Diffview: Repo history" })
-
--- toggles
-vim.keymap.set("n", "<leader>tD", "<cmd>DiffviewToggleFiles<cr>", { desc = "Diffview: Toggle file list" })
-vim.keymap.set("n", "<leader>tG", function()
-	local gs = require("gitsigns")
-	local cfg = require("gitsigns.config").config
-	local current = cfg.signcolumn
-	gs.toggle_signs(not current)
-end, { desc = "Toggle Git Signs" })
