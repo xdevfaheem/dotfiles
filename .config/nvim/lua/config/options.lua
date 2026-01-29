@@ -23,10 +23,12 @@ opt.breakindent = true -- continue having same indent while wrapping
 -- Search settings
 opt.ignorecase = false -- Case insensitive search
 opt.smartcase = true -- Case sensitive if uppercase in search
-opt.hlsearch = false -- don't highlight results of previous search, its great
+opt.hlsearch = true -- highlight results of previous search, (would be cleared by esc keymap)
 
 -- Visual settings
+opt.termguicolors = true -- Enable truecolor support
 opt.list = true -- Show whitespace characters
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 opt.signcolumn = "yes" -- Always show sign column (on the left, like for diagnostic)
 opt.showmatch = true -- Highlight matching brackets
 opt.matchtime = 2 -- How long to show matching bracket
@@ -79,10 +81,6 @@ opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 -- Better diff options
 opt.diffopt:append("linematch:60")
 
--- Performance improvements
-opt.redrawtime = 10000
-opt.maxmempattern = 20000
-
 -- netrw config
 vim.g.netrw_keepdir = 0
 vim.g.netrw_browse_split = 3 -- open file in new tab
@@ -101,3 +99,8 @@ opt.fillchars = {
 	diff = "╱",
 	eob = " ",
 }
+
+vim.cmd.filetype("plugin indent on") -- Enable filetype detection, plugins, and indentation
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

@@ -7,7 +7,6 @@ vim.pack.add({
 
 -- Setup gitsigns.nvim
 require("gitsigns").setup({
-	word_diff = true,
 	on_attach = function(buffer)
 		local gs = require("gitsigns")
 

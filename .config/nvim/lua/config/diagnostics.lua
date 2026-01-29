@@ -24,13 +24,12 @@ vim.fn.sign_define("DapBreakpoint", {
 local sev = vim.diagnostic.severity
 
 vim.diagnostic.config({
-	-- keep underline & severity_sort on for quick scanning
-	underline = true,
+	underline = { severity = vim.diagnostic.severity.ERROR },
 	severity_sort = true,
 	update_in_insert = false, -- less flicker
 	float = {
 		border = "rounded",
-		source = true,
+		source = "if_many",
 	},
 	-- keep signs & virtual text, but tune them as you like
 	signs = {
@@ -46,6 +45,7 @@ vim.diagnostic.config({
 		source = "if_many",
 		prefix = "●",
 	},
+	virtual_lines = false,
 	-- dim whole line
 	linehl = {
 		[sev.ERROR] = "DiagnosticErrorLine",
@@ -53,6 +53,8 @@ vim.diagnostic.config({
 		[sev.INFO] = "DiagnosticInfoLine",
 		[sev.HINT] = "DiagnosticHintLine",
 	},
+	-- auto open the float for diagnostics, like when doing ]d
+	jump = { float = true },
 })
 
 -- keymaps
@@ -65,10 +67,12 @@ local diagnostic_goto = function(next, severity)
 		})
 	end
 end
-map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
 map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
 map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
 map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
+map('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })

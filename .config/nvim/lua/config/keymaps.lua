@@ -1,9 +1,15 @@
 vim.g.mapleader = vim.keycode("<Space>")
+vim.g.maplocalleader = vim.keycode("<Space>")
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>')
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
-map("n", "Y", "y$", { desc = "Yank to end of line" })
+-- clear search highlights
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- yank to end of line
+map("n", "Y", "y$")
 
 -- Better paste (doesn't replace clipboard with deleted text)
 map("v", "p", '"_dP', opts)
@@ -52,15 +58,9 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move selection up" })
 map("v", "<", "<gv", { desc = "Indent left and reselect" })
 map("v", ">", ">gv", { desc = "Indent right and reselect" })
 
--- Better line start/end (more comfortable than $ and ^)
-map("n", "gl", "$", { desc = "Go to end of line" })
-map("n", "gh", "^", { desc = "Go to start of line" })
-
 -- Buffers
 map("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bp", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 local function smart_close_buffer() -- Function to close buffer but keep tab if it's the only buffer in tab
 	local buffers_in_tab = #vim.fn.tabpagebuflist()
 	if buffers_in_tab > 1 then
@@ -77,7 +77,7 @@ map("n", "<tab>c", "<cmd>tabnew<cr>", { desc = "New tab" })
 map("n", "<tab>q", "<cmd>tabclose<cr>", { desc = "Close tab" })
 map("n", "<tab>n", "<cmd>tabnext<cr>", { desc = "Next tab" })
 map("n", "<tab>p", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
-local function open_file_in_tab() -- Function to open file in new tab
+local function open_file_in_tab()
 	vim.ui.input({ prompt = "File to open in new tab: ", completion = "file" }, function(input)
 		if input and input ~= "" then
 			vim.cmd("tabnew " .. input)
@@ -91,50 +91,10 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
--- Auto-close pairs (simple, no plugin needed)
-map("i", "`", "``<left>")
-map("i", "'", "''<left>") -- !
-map("i", '"', '""<left>')
-map("i", "(", "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
-map("i", "<", "<><left>")
-
 -- Quick file navigation
 -- flick netrw file explorer (ditch neotree bloat bs)
 map("n", "\\", "<cmd>Lexplore! 15<cr>", opts)
 map("n", "<leader>ff", ":find ", { desc = "Find file" })
-
--- Quickfix and location lists
-map("n", "<leader>xl", function()
-	local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
-end, { desc = "Location List" })
-
-map("n", "<leader>xq", function()
-	local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
-end, { desc = "Quickfix List" })
-
-map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
-
--- Inspection tools (useful for debugging highlights and treesitter)
-map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
-
--- LSP specific
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
-map("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-map("n", "gr", vim.lsp.buf.references, { desc = "Go to references" })
-map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
 -- vim.pack plugins update
 vim.keymap.set("n", "<leader>pu", "<cmd>lua vim.pack.update()<CR>")

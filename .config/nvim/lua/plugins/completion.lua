@@ -11,25 +11,8 @@ require("blink.cmp").setup({
 	keymap = {
 		preset = "super-tab",
 
-		-- ["<S-Tab>"] = { "select_prev", "fallback" },
-		-- ["<Tab>"] = { "select_next", "fallback" },
-		-- ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-		-- ["<C-n>"] = { "select_next", "fallback_to_mappings" },
-
 		["<Up>"] = { "scroll_documentation_down", "fallback" },
 		["<Down>"] = { "scroll_documentation_up", "fallback" },
-
-		-- ["<CR>"] = {
-		-- 	function(cmp)
-		-- 		if cmp.snippet_active() then
-		-- 			return cmp.accept()
-		-- 		else
-		-- 			return cmp.select_and_accept()
-		-- 		end
-		-- 	end,
-		-- 	"snippet_forward",
-		-- 	"fallback",
-		-- },
 	},
 	appearance = {
 		nerd_font_variant = "mono",
@@ -42,6 +25,24 @@ require("blink.cmp").setup({
 		accept = { auto_brackets = { enabled = true } },
 		list = { selection = { preselect = true, auto_insert = false } },
 		ghost_text = { enabled = true },
+		documentation = { auto_show = true },
+	},
+
+	cmdline = {
+		keymap = {
+			preset = "inherit",
+			["<Tab>"] = { "accept" },
+			["<CR>"] = { "fallback" }, -- act as usual, prevent accepting cmp when doing :w ehen menu show wq, i can enter on :w
+		},
+		completion = {
+			menu = {
+				-- only show menu when writing commands or inputs
+				auto_show = function(ctx)
+					return vim.fn.getcmdtype() == ":" or vim.fn.getcmdtype() == "@"
+				end,
+			},
+			ghost_text = { enabled = true },
+		},
 	},
 
 	sources = {
