@@ -56,16 +56,26 @@ if [ -d "$xinitdir"/xinitrc.d ] ; then
 	unset f
 fi
 
+# X settings
 xset r rate 300 50
 xset s 500
 
-xss-lock -- slock &
+# hoking slock with xsreensaver
+xss-lock -- /usr/local/bin/slock &
 
+# notification daemon
 dunst &
-dwmblocks &
+
+# status bar
+/usr/local/bin/slstatus &
+
+# clipboard manager (listener)
 clipmenud &
+
+# adjust color temperature according to time
 redshift &
 
+# multi media server (pipewire should itself launch wireplumber and pipewire-pulse. refer https://docs.voidlinux.org/config/media/pipewire.html#basic-setup)
 pipewire &
 
 # https://www.reddit.com/r/voidlinux/comments/1dw4j52/how_to_start_a_dbus_session/
