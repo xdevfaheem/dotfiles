@@ -9,10 +9,6 @@
             "left": 3,
             "right": 3
         },
-       // "color": {
-       //     "1": "light_blue",
-       //     "2": "light_blue"
-       // }
     },
     "display": {
         "brightColor": false,
@@ -27,9 +23,8 @@
             "───────────────────────────"
         ],
         "size": {
-            "ndigits": 1,
-            "maxPrefix": "MB",
-            "binaryPrefix": "si"
+            "ndigits": 2,
+            "binaryPrefix": "iec",
         },
         "key": {
             "type": "both",
@@ -38,17 +33,6 @@
         }
     },
     "modules": [
-       // {
-       //     "fqdn": true,
-       //     "type": "title",
-       //     "format": "{user-name-colored>49}{at-symbol-colored}{host-name-colored}",
-       //     "color": {
-       //         "user": "92",
-       //         "at": "2;37",
-       //         "host": "92"
-       //     }
-       //   //"keyColor": "green"
-       // },
         "break",
         {
             "type": "custom",
@@ -98,7 +82,7 @@
             "type": "memory"
         },
         {
-            //"key": "Disk ({mountpoint})",
+			"key": "Disk",
             "type": "disk",
             "folders": "/home:/:/boot"
         },
