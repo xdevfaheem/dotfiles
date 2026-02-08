@@ -14,13 +14,12 @@ require("mason").setup({
 })
 require("mason-tool-installer").setup({
 	ensure_installed = {
-		-- lsps
+		-- lsp
 		"lua-language-server",
-		"basedpyright",
 		"ty",
 		-- formatters
 		"stylua",
-		"ruff",
+		"ruff", --also a linter
 		"shfmt",
 		-- linters
 		"codespell",

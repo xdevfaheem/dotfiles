@@ -1,3 +1,15 @@
+-- Auto-start on-start
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function ()
+		-- mason updates
+		vim.cmd("MasonUpdate")
+		vim.cmd("MasonToolsUpdateSync")
+
+		-- treesitter parsers update
+		vim.cmd("TSUpdate")
+	end
+})
+
 -- Basic autocommands
 local augroup = vim.api.nvim_create_augroup("CustomCommands", {})
 
