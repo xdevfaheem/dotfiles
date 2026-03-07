@@ -1,12 +1,12 @@
 vim.g.mapleader = vim.keycode("<Space>")
 vim.g.maplocalleader = vim.keycode("<Space>")
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>')
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>")
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- clear search highlights
-map('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- yank to end of line
 map("n", "Y", "y$")
@@ -97,4 +97,14 @@ map("n", "\\", "<cmd>Lexplore! 15<cr>", opts)
 map("n", "<leader>ff", ":find ", { desc = "Find file" })
 
 -- vim.pack plugins update
-vim.keymap.set("n", "<leader>pu", "<cmd>lua vim.pack.update()<CR>")
+vim.keymap.set("n", "<leader>u", function()
+
+	-- update vim plugins/packages
+	vim.pack.update()
+
+	-- update external tools (lsp, formatter, linters..) via mason
+	vim.cmd("Mason")
+
+	-- update the treesitter parsers
+	vim.cmd("TSUpdate")
+end, { desc = "Full Update" })
